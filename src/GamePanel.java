@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.Random;
 
-public class GamePanel extends JPanel implements ActionsListener {
+public class GamePanel extends JPanel implements ActionListener {
 
 
     static final int SCREEN_WIDTH = 600;
@@ -27,7 +27,7 @@ public class GamePanel extends JPanel implements ActionsListener {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.black);
         this.setFocusable(true);
-        this.addKeyListener(new MyKeyAdapter);
+        this.addKeyListener(new MyKeyAdapter());
         startGame();
     }
 
@@ -46,10 +46,10 @@ public class GamePanel extends JPanel implements ActionsListener {
     public void draw(Graphics g){
         if(running){
            for(int i=0; i<SCREEN_HEIGHT/UNIT_SIZE; i++){
-               g.drawline(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
-               g.drawline(0, i*UNIT_SIZE, SCREEN_WIDTH, i*UNIT_SIZE);
+               g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
+               g.drawLine(0, i*UNIT_SIZE, SCREEN_WIDTH, i*UNIT_SIZE);
            }
-           g.SetColor(Color.red);
+           g.setColor(Color.red);
            g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
 
            for(int i = 0; i < bodyParts; i++){
@@ -120,7 +120,7 @@ public class GamePanel extends JPanel implements ActionsListener {
             running = false;
         }
         if(x[0] > SCREEN_WIDTH){
-            unning = false;
+            running = false;
         }
         if(y[0] < 0){
             running = false;
@@ -129,7 +129,7 @@ public class GamePanel extends JPanel implements ActionsListener {
             running = false;
         }
         if(!running){
-            timer.stop;
+            timer.stop();
         }
 
     }
